@@ -2,6 +2,7 @@ package com.example.lab2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +14,15 @@ public class MainActivity extends AppCompatActivity {
     public void clickFunction1( View view){
         Log.i("info","button1 pressed");
         EditText myTextField=(EditText) findViewById(R.id.editText);
-        Toast.makeText(MainActivity.this,myTextField.getText().toString(),Toast.LENGTH_LONG).show();
+        //Toast.makeText(MainActivity.this,myTextField.getText().toString(),Toast.LENGTH_LONG).show();
+        String str=myTextField.getText().toString();
+        gotoActivity2(str);
+    }
+
+    public void gotoActivity2(String s){
+        Intent intent=new Intent(this,Main2Activity.class);
+        intent.putExtra("message",s);
+        startActivity(intent);
     }
 
     @Override
